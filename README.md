@@ -85,9 +85,13 @@ phr_use_db_phreeqc(save = TRUE)
 ### Caution
 > One caveat of PHREEQC calculations is that the thermodynamic data (e.g., stability constants for organic ligands) are often either (1) poorly constrained or (2) not included in the database. If more up-to-date thermodynamic data for organic ligands are required, they can be added manually to the database file (which can be challenging in TidyPHREEQC), or alternative platforms can be used. One such platform is the Water–Organic–Rock–Microbe (WORM) Portal (runs on Jupiter Notebook; Link here: https://worm-portal.asu.edu/), which actively maintains and updates thermodynamic databases and also allows users to upload their own database files. The WORM Portal uses EQ3/6, a geochemical modeling package developed by the Lawrence Livermore National Laboratory. EQ3/6 consists of two linked programs: EQ3 – Performs aqueous speciation and solubility calculations, and EQ6 – Performs reaction-path modeling to simulate geochemical processes and system evolution.
 
-## To construct speciation and Pourbaix diagram
+# To construct a speciation and Pourbaix diagram
 
 >Please read the 'AqueousSpeciation.md' and 'Pourbaix.md' for more information.
+
+# Standardized element and speciation names
+
+>To see how elements (including oxidation states) and their speciation are named across databases, start with StandardizedNames.md, then check the ThermodynamicData folder for further information.
 
 
 
