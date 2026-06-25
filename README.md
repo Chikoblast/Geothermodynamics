@@ -1,5 +1,5 @@
 # Geothermodynamics tutorial
-Using TidyPHREEQC to calculate 1) aqueous speciation, 2) saturation indices of minerals, and 3) make a Pourbaix diagram. As this code runs RStudio (now officially known as the Posit IDE), it natively runs on Windows, macOS, and Linux, allowing all users calculate thermodynamics. Additionally, as it runs on R and TidyPHREEQC 
+Using TidyPHREEQC (and the modified code), you can calculate (1) aqueous speciation, (2) mineral saturation indices, and (3) construct speciation and Pourbaix diagrams. Because the code runs within RStudio (now officially called the Posit IDE), it is fully compatible with Windows, macOS, and Linux, making thermodynamic calculations accessible to all users. In addition, since it is run on R, it is freely available and allows you to generate both speciation and Pourbaix diagrams for free.
 
 # Important links
 
@@ -85,9 +85,9 @@ phr_use_db_phreeqc(save = TRUE)
 ### Caution
 > One caveat of PHREEQC calculations is that the thermodynamic data (e.g., stability constants for organic ligands) are often either (1) poorly constrained or (2) not included in the database. If more up-to-date thermodynamic data for organic ligands are required, they can be added manually to the database file (which can be challenging in TidyPHREEQC), or alternative platforms can be used. One such platform is the Water–Organic–Rock–Microbe (WORM) Portal (runs on Jupiter Notebook; Link here: https://worm-portal.asu.edu/), which actively maintains and updates thermodynamic databases and also allows users to upload their own database files. The WORM Portal uses EQ3/6, a geochemical modeling package developed by the Lawrence Livermore National Laboratory. EQ3/6 consists of two linked programs: EQ3 – Performs aqueous speciation and solubility calculations, and EQ6 – Performs reaction-path modeling to simulate geochemical processes and system evolution.
 
+## To construct speciation and Pourbaix diagram
 
-
-
+>Please read the 'AqueousSpeciation.md' and 'Pourbaix.md' for more information.
 
 
 
