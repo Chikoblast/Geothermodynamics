@@ -46,7 +46,7 @@ phr_use_db_wateq4f(save = TRUE)
 phr_use_db_phreeqc(save = TRUE)
 }
 ```
-# Before you start
+# Before you get started
 
 ## Step 1: Download R Studio (Link here: https://posit.co/products/open-source/rstudio).
 
@@ -85,61 +85,6 @@ phr_use_db_phreeqc(save = TRUE)
 ### Caution
 > One caveat of PHREEQC calculations is that the thermodynamic data (e.g., stability constants for organic ligands) are often either (1) poorly constrained or (2) not included in the database. If more up-to-date thermodynamic data for organic ligands are required, they can be added manually to the database file (which can be challenging in TidyPHREEQC), or alternative platforms can be used. One such platform is the Water–Organic–Rock–Microbe (WORM) Portal (runs on Jupiter Notebook; Link here: https://worm-portal.asu.edu/), which actively maintains and updates thermodynamic databases and also allows users to upload their own database files. The WORM Portal uses EQ3/6, a geochemical modeling package developed by the Lawrence Livermore National Laboratory. EQ3/6 consists of two linked programs: EQ3 – Performs aqueous speciation and solubility calculations, and EQ6 – Performs reaction-path modeling to simulate geochemical processes and system evolution.
 
-## Step 3: Run the TidyPHREEQC code for calculating aqueous speciation
-
-> Take aqueous speciation table and place it in "phr_solution()." Becareful with the synthaxes or else the speciation will not be imported into the PHREEQC calculations. 
-
-```
-library(plyr)
-
-#Tidyverse a R package for data science
-library(tidyverse)
-
-# devtools::install_github("paleolimbot/tidyphreeqc")
-library(tidyphreeqc)
-
-#Database you are using:
-phr_use_db_minteq.v4()
-
-#Solution - Initial condition
-elm = "Co"
-
-#pH - you can change the range of pH here
-pHCode <- c(5,6,7,8,9,10)
-pHLen =  1:length(pHCode)
-
-#Phreeqc calculation input
-
-  for (ipH in pHLen){
-    #Change here ----->
-    sink(sprintf("pH%s_%s_Scenario3.txt",pHCode[ipH],elm))
-    phr_run(
-      phr_solution(
-        #Change here (units are in mM ----->
-        "EDTA" = 0.03422,
-        "K" = 44.54,
-        "Na" = 33.59166, 
-        "P" = 35.86,
-        "N(3)" = "30.28 as NH4+",
-        "N(5)" = "20 as NO3-",
-        "S(6)" = "15.16574 as SO4-2", 
-        "Mg" = 0.49188, 
-        "Cl" = 1.01304,
-        "Zn" = 0.00696,
-        "Ca" = 0.0068,
-        "Fe(2)" = 0.01798,
-        "Mo" = 0.01798,
-        "Cu(2)" = "0.0008 as Cu+2",
-        "Co(2)" = "0.00168 as Co+2",
-        "Mn(2)" = "0.00616 as Mn+2",
-        "Cyanide" = 0.0097,
-        "pH" = pHCode[ipH],
-        "temp" = 25)
-        ) %>%
-        phr_print_output()
-        sink()
-        }
-```
 
 
 
