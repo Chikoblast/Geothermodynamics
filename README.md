@@ -56,13 +56,22 @@ phr_use_db_phreeqc(save = TRUE)
 
 ### For experimental solutions
 
-> Carefully weigh all inorganic and organic salts added to your solution and calculate their final concentrations. Using these values, construct an aqueous composition table that lists the total concentrations of all major cations and anions present in the solution (e.g., Na⁺, K⁺, Ca²⁺, Cl⁻, NO₃⁻, HCO₃⁻) in units of mmol kg⁻¹ water. This table will serve as the input for TidyPHREEQC. Although TidyPHREEQC accepts concentrations in mmol kg⁻¹, the software reports concentrations internally and in its output as molarity (M). An example of an aqueous composition table is shown below.
+> Carefully weigh all inorganic and organic salts added to your solution and calculate their final concentrations. Using these values, construct an aqueous composition table that lists the total concentrations of all major cations and anions present in the solution (e.g., Na<sup>+</sup>, K<sup>+</sup>, Ca<sup>2+</sup>, Cl<sup>-</sup>, NO<sub>3</sub><sup>-</sup>, HCO<sub>3</sub><sup>-</sup>) in units of mmol kg⁻¹ water. This table will serve as the input for TidyPHREEQC. Although TidyPHREEQC accepts concentrations in mmol kg⁻¹, the software reports concentrations internally and in its output as molarity (M). An example of an aqueous composition table is shown below.
+
+**Table 1.** Example of the aqueous composition table. 
+| Component (seawater equivalent) | Na+ (mmol/kg) |Cl<sup>-</sup> (mmol/kg) | NO<sub>3</sub><sup>-</sup> (mmol/kg) | HCO<sub>3</sub><sup>-</sup> (mmol/kg) |
+|---------------------------------|---------------|---------------|----------------|-----------------|
+| NaCl                            | 468           | 546           | 0              | 0               |
+| NaHCO3                          | 2.3           | 0             | 0              | 2.3             |
+| NaNO3                           | 0.05          | 0             | 0.05           | 0               |
+| **TOTAL**                       | **470.35**    | **546**       | **0.05**       | **2.3**         |
+
 
 ### For field samples
 
 > Conduct measurements of dissolved metals using inductively coupled plasma mass spectrometry (ICP-MS) and measure anion concentrations using ion chromatography (IC). Then make the aqueous composition table (see above). 
 
-> One caveat of PHREEQC calculations is that the thermodynamic data (e.g., stability constants for organic ligands) are often either (1) poorly constrained or (2) not included in the database. If more up-to-date thermodynamic data for organic ligands are required, they can be added manually to the database file (which can be challenging in TidyPHREEQC), or alternative platforms can be used. One such platform is the Water–Organic–Rock–Microbe (WORM) Portal, which actively maintains and updates thermodynamic databases and also allows users to upload their own database files. The WORM Portal uses EQ3/6, a geochemical modeling package developed by the Lawrence Livermore National Laboratory. EQ3/6 consists of two linked programs: EQ3 – Performs aqueous speciation and solubility calculations, and EQ6 – Performs reaction-path modeling to simulate geochemical processes and system evolution.
+> One caveat of PHREEQC calculations is that the thermodynamic data (e.g., stability constants for organic ligands) are often either (1) poorly constrained or (2) not included in the database. If more up-to-date thermodynamic data for organic ligands are required, they can be added manually to the database file (which can be challenging in TidyPHREEQC), or alternative platforms can be used. One such platform is the Water–Organic–Rock–Microbe (WORM) Portal (runs on Jupiter Notebook; Link here: https://worm-portal.asu.edu/), which actively maintains and updates thermodynamic databases and also allows users to upload their own database files. The WORM Portal uses EQ3/6, a geochemical modeling package developed by the Lawrence Livermore National Laboratory. EQ3/6 consists of two linked programs: EQ3 – Performs aqueous speciation and solubility calculations, and EQ6 – Performs reaction-path modeling to simulate geochemical processes and system evolution.
 
 ```
 ```
