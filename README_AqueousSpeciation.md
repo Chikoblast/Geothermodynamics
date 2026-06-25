@@ -1,5 +1,5 @@
 # Geothermodynamics tutorial
-Using TidyPHREEQC to calculate 1) aqueous speciation, 2) saturation indices of minerals, and 3) make a Pourbaix diagram.
+Using TidyPHREEQC to calculate 1) aqueous speciation, 2) saturation indices of minerals, and 3) make a Pourbaix diagram. As this code runs RStudio (now officially known as the Posit IDE), it natively runs on Windows, macOS, and Linux, allowing all users calculate thermodynamics. Additionally, as it runs on R and TidyPHREEQC 
 
 # Important links
 
@@ -46,7 +46,7 @@ phr_use_db_wateq4f(save = TRUE)
 phr_use_db_phreeqc(save = TRUE)
 }
 ```
-# TidyPHREEQC: Calculating Aqueous Speciation and Mineral Saturation Indices
+# Before you start
 
 ## Step 1: Download R Studio (Link here: https://posit.co/products/open-source/rstudio).
 
