@@ -1,5 +1,5 @@
-# Geothermodynamics tutorial by Chikoblast
-Using TidyPHREEQC to calculate 1) aqueous speciation, 2) saturation indicies of minerals, and 3) make Pourbaix diagram.
+# Geothermodynamics tutorial
+Using TidyPHREEQC to calculate 1) aqueous speciation, 2) saturation indices of minerals, and 3) make a Pourbaix diagram.
 
 # Important links
 
@@ -56,22 +56,100 @@ phr_use_db_phreeqc(save = TRUE)
 
 ### For experimental solutions
 
-> Carefully weigh all inorganic and organic salts added to your solution and calculate their final concentrations. Using these values, construct an aqueous composition table that lists the total concentrations of all major cations and anions present in the solution (e.g., Na<sup>+</sup>, K<sup>+</sup>, Ca<sup>2+</sup>, Cl<sup>-</sup>, NO<sub>3</sub><sup>-</sup>, HCO<sub>3</sub><sup>-</sup>) in units of mmol kg⁻¹ water. This table will serve as the input for TidyPHREEQC. Although TidyPHREEQC accepts concentrations in mmol kg⁻¹, the software reports concentrations internally and in its output as molarity (M). An example of an aqueous composition table is shown below.
+> Carefully weigh all inorganic and organic salts added to your solution and calculate their final concentrations. Using these values, construct an aqueous composition table that lists the total concentrations of all major cations and anions present in the solution (e.g., Na<sup>+</sup>, K<sup>+</sup>, Ca<sup>2+</sup>, Cl<sup>-</sup>, NO<sub>3</sub><sup>-</sup>, HCO<sub>3</sub><sup>-</sup>) in units of mM water. This table will serve as the input for TidyPHREEQC. Although TidyPHREEQC accepts concentrations in mM, the program reports concentrations internally and in its output as molarity (M). An example of an aqueous composition table is shown below.
 
 **Table 1.** Example of the aqueous composition table. 
-| Component (seawater equivalent) | Na+ (mmol/kg) |Cl<sup>-</sup> (mmol/kg) | NO<sub>3</sub><sup>-</sup> (mmol/kg) | HCO<sub>3</sub><sup>-</sup> (mmol/kg) |
-|---------------------------------|---------------|---------------|----------------|-----------------|
-| NaCl                            | 468           | 546           | 0              | 0               |
-| NaHCO3                          | 2.3           | 0             | 0              | 2.3             |
-| NaNO3                           | 0.05          | 0             | 0.05           | 0               |
-| **TOTAL**                       | **470.35**    | **546**       | **0.05**       | **2.3**         |
-
+| Salt | EDTA | Cyanide (CN<sup>-</sup>) | K<sup>+</sup> | Na<sup>+</sup> | P | N (NH<sub>4</sub><sup>+</sup>) | N (NO<sub>3</sub><sup>−</sup>) | S (SO<sub>4</sub><sup>2−</sup>) | Mg<sup>2+</sup> | Cl<sup>−</sup> | Zn<sup>2+</sup> | Ca<sup>2+</sup> | Fe<sup>2+</sup> | Mo | Cu<sup>2+</sup> | Co<sup>2+</sup> | Mn<sup>2+</sup> |
+|------|------|---------|--------------|--------------|--------------------------------|------------------------------|-------------------------------|-------------------------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|
+| Units | mM | mM | mM | mM | mM | mM | mM | mM | mM | mM | mM | mM | mM | mM | mM | mM | mM |
+| K<sub>2</sub>HPO<sub>4</sub> | 0 | 0 | 44.54 | 0 | 22.27 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| NaH<sub>2</sub>PO<sub>4</sub> | 0 | 0 | 0 | 13.59 | 13.59 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| (NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub> | 0 | 0 | 0 | 0 | 0 | 30.28 | 0 | 15.14 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| MgCl<sub>2</sub> | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0.49188 | 0.98376 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| EDTA | 0.03422 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Cyanide | 0 | 0.0097 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| ZnSO<sub>4</sub> | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0.00696 | 0 | 0 | 0.00696 | 0 | 0 | 0 | 0 | 0 | 0 |
+| CaCl<sub>2</sub> | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0.0136 | 0 | 0.0068 | 0 | 0 | 0 | 0 | 0 |
+| FeSO<sub>4</sub> | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0.01798 | 0 | 0 | 0 | 0 | 0.01798 | 0 | 0 | 0 | 0 |
+| Na<sub>2</sub>MoO<sub>4</sub> | 0 | 0 | 0 | 0.00166 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0.00083 | 0 | 0 | 0 |
+| CuSO<sub>4</sub> | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0.0008 | 0 | 0 | 0 | 0 | 0 | 0 | 0.0008 | 0 | 0 |
+| CoCl<sub>2</sub> | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0.00168 | 0 |
+| MnCl<sub>2</sub> | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0.00616 |
+| NaNO<sub>3</sub> | 0 | 0 | 0 | 20 | 0 | 0 | 20 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| **Sum** | 0.03422 | 0.0097 | 44.54 | 33.59166 | 35.86 | 30.28 | 20 | 15.16574 | 0.49188 | 1.01304 | 0.00696 | 0.0068 | 0.01798 | 0.00083 | 0.0008 | 0.00168 | 0.00616 |
 
 ### For field samples
 
 > Conduct measurements of dissolved metals using inductively coupled plasma mass spectrometry (ICP-MS) and measure anion concentrations using ion chromatography (IC). Then make the aqueous composition table (see above). 
 
+### Caution
 > One caveat of PHREEQC calculations is that the thermodynamic data (e.g., stability constants for organic ligands) are often either (1) poorly constrained or (2) not included in the database. If more up-to-date thermodynamic data for organic ligands are required, they can be added manually to the database file (which can be challenging in TidyPHREEQC), or alternative platforms can be used. One such platform is the Water–Organic–Rock–Microbe (WORM) Portal (runs on Jupiter Notebook; Link here: https://worm-portal.asu.edu/), which actively maintains and updates thermodynamic databases and also allows users to upload their own database files. The WORM Portal uses EQ3/6, a geochemical modeling package developed by the Lawrence Livermore National Laboratory. EQ3/6 consists of two linked programs: EQ3 – Performs aqueous speciation and solubility calculations, and EQ6 – Performs reaction-path modeling to simulate geochemical processes and system evolution.
 
+## Step 3: Run the TidyPHREEQC code for calculating aqueous speciation
+
+> Take aqueous speciation table and place it in "phr_solution()." Becareful with the synthaxes or else the speciation will not be imported into the PHREEQC calculations. 
+
 ```
+library(plyr)
+
+#Tidyverse a R package for data science
+library(tidyverse)
+
+# devtools::install_github("paleolimbot/tidyphreeqc")
+library(tidyphreeqc)
+
+#Database you are using:
+phr_use_db_minteq.v4()
+
+#Solution - Initial condition
+elm = "Co"
+
+#pH - you can change the range of pH here
+pHCode <- c(5,6,7,8,9,10)
+pHLen =  1:length(pHCode)
+
+#Phreeqc calculation input
+
+  for (ipH in pHLen){
+    #Change here ----->
+    sink(sprintf("pH%s_%s_Scenario3.txt",pHCode[ipH],elm))
+    phr_run(
+      phr_solution(
+        #Change here (units are in mM ----->
+        "EDTA" = 0.03422,
+        "K" = 44.54,
+        "Na" = 33.59166, 
+        "P" = 35.86,
+        "N(3)" = "30.28 as NH4+",
+        "N(5)" = "20 as NO3-",
+        "S(6)" = "15.16574 as SO4-2", 
+        "Mg" = 0.49188, 
+        "Cl" = 1.01304,
+        "Zn" = 0.00696,
+        "Ca" = 0.0068,
+        "Fe(2)" = 0.01798,
+        "Mo" = 0.01798,
+        "Cu(2)" = "0.0008 as Cu+2",
+        "Co(2)" = "0.00168 as Co+2",
+        "Mn(2)" = "0.00616 as Mn+2",
+        "Cyanide" = 0.0097,
+        "pH" = pHCode[ipH],
+        "temp" = 25)
+        ) %>%
+        phr_print_output()
+        sink()
+        }
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
