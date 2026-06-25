@@ -28,7 +28,7 @@ Obtain information about the aqueous solution composition from your experimental
 
 ## Step 2: Run the TidyPHREEQC code for calculating aqueous speciation
 
-> Take aqueous speciation table and place it in "phr_solution()" (see the code below). Be careful with the syntax or else the speciation will not be imported into the PHREEQC calculations. For the type of syntaxes available in each of your database 
+> Take aqueous speciation table and place it in "phr_solution()" (see the code below). Be careful with the syntax or else the speciation will not be imported into the PHREEQC calculations. For the type of syntaxes available in each of your database. 
 
 ```
 library(plyr)
