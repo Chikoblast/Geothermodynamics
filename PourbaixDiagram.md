@@ -203,6 +203,11 @@ ggsave(
 
 <img width="958" height="722" alt="Co_Eh_pH" src="https://github.com/user-attachments/assets/63700138-8cb2-4698-b2f6-bb1f4baadef8" />
 
+# Figure clean up using Illustrator
+
+>As the file is exported as PDF, you can modify the figure using Illustrator to make it look a bit more professional (see figure below).
+
+<img width="950" height="676" alt="Eh_pH_Final" src="https://github.com/user-attachments/assets/1e7b2d69-81c7-4672-90d7-f9569ba68f9b" />
 
 
 
