@@ -87,7 +87,7 @@ phr_use_db_phreeqc(save = TRUE)
 
 # To construct a speciation and Pourbaix diagram
 
->Please read the 'AqueousSpeciation.md' and 'Pourbaix.md' for more information.
+>Please read the 'AqueousSpeciation.md' and 'PourbaixDiagram.md' for more information.
 
 # Standardized element and speciation names
 
