@@ -30,11 +30,11 @@ pH_seq <- seq(0, 13, 0.1)
 pe_seq <- seq(-25, 50, 0.1)
 
 aqueous_species <- c(
-  "Co+2", "Co+3","CoHPO4","Co(OH)2","CoOH+"
+  "Co+2", "Co+3", "CoHPO4", "Co(OH)2", "CoOH+", "CoNO2+", "CoNO3+","Co(NO3)2, CoSO4,Co(NH3)+2"
 )
 
 solid_phases <- c(
-  "Co(OH)2","Co3(PO4)2","CoHPO4","Co3O4"
+  "Co(OH)2", "Co3(PO4)2", "CoHPO4", "Co3O4"
 )
 
 solid_labels <- solid_phases
